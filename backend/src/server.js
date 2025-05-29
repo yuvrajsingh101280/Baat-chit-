@@ -36,7 +36,12 @@ app.use("/api/chat", chatRoutes);
 //     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
 //   });
 // }
+app.get("/", (req, res) => {
 
+
+  res.send("APi is working")
+
+})
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
