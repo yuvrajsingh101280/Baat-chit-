@@ -37,7 +37,7 @@ app.use("/api/chat", chatRoutes);
 //   });
 // }
 // for reseting the uptime
-const url = "https://green-basket-new.onrender.com"
+const url = "https://baat-chit-chat.onrender.com"
 const interval = 30000
 
 
