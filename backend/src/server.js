@@ -15,10 +15,22 @@ const PORT = process.env.PORT;
 
 const __dirname = path.resolve();
 
+// ✅ CORS whitelist
+const allowedOrigins = [
+  "http://localhost:8080",
+  "https://baat-chit-swmr.vercel.app"
+];
+
 app.use(
   cors({
-    origin: process.env.FRONT_END_URL,
-    credentials: true, // allow frontend to send cookies
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
   })
 );
 
