@@ -7,7 +7,7 @@ import path from "path";
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 import chatRoutes from "./routes/chat.route.js";
-
+import axios from "axios"
 import { connectDB } from "./lib/db.js";
 
 const app = express();
