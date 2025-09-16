@@ -29,14 +29,30 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/chat", chatRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// if (process.env.NODE_ENV === "production") {
+//   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
-  });
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
+//   });
+// }
+// for reseting the uptime
+const url = "https://green-basket-new.onrender.com"
+const interval = 30000
+
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((res) => {
+      console.log("Website reloaded");
+    })
+    .catch((err) => {
+      console.log(`Error : ${err.message}`);
+    });
 }
 
+setInterval(reloadWebsite, interval);
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
